@@ -30,13 +30,13 @@
             <div class="col-md-4">
                 <div class="status withdraw">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="widrawBalance">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="status balance">
                     <h5>Balance</h5>
-                    <h2>$1240</h2>
+                    <h2>$ <span id="balance">1240</span></h2>
                 </div>
             </div>
         </div>
@@ -83,8 +83,38 @@
 
             const totalDeposit = depositAmmountNumber + myDepositNumber;
 
+            const balance = document.getElementById('balance').innerText;
+            const balanceNumber = parseFloat(balance);
+
+            const totalBalance = balanceNumber + depositAmmountNumber ;
+
+            document.getElementById('balance').innerText = totalBalance;
+
             document.getElementById('my-deposit').innerText = totalDeposit;
             document.getElementById('deposit-ammount').value = '';
+        })
+
+        //widraw
+
+
+        const withdrawBtn = document.getElementById('withdraw-btn');
+        withdrawBtn.addEventListener('click', function(){
+            const withdrawAmmunt = document.getElementById('withdraw-ammount').value;
+            const withdrawAmmuntNum = parseFloat(withdrawAmmunt);
+
+            const withdrawDisplay = document.getElementById('widrawBalance').innerText;
+            const withdrawDisplayNum = parseFloat(withdrawDisplay);
+
+            const balance = document.getElementById('balance').innerText;
+            const balanceNumber = parseFloat(balance);
+
+            const totalWithdraw = withdrawDisplayNum + withdrawAmmuntNum;
+
+            const finalBalance = balanceNumber - withdrawAmmuntNum ;
+
+            document.getElementById('balance').innerText = finalBalance;
+            document.getElementById('widrawBalance').innerText = totalWithdraw;
+            document.getElementById('withdraw-ammount').value = '' ;
         })
         
     </script>
